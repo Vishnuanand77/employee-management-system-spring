@@ -48,7 +48,8 @@ const AddEmployee = () => {
                 {/* Email Input Field */}
                 <div className='items-center justify-center h-14 w-full my-4'>
                     <label className='block text-gray-600 text-sm font-normal'>Email</label>
-                    <input type='email' name='email' value={employee.emailId} onChange={(e) => handleChange(e)} className='h-10 w-96 border mt-2 px-2 py-2'></input>
+                    <input type='email' name='emailId' value={employee.emailId} onChange={(e) => handleChange(e)} 
+                    className='h-10 w-96 border mt-2 px-2 py-2'></input>
                 </div>
                 {/* Save and Clear Buttons */}
                 <div className='items-center justify-center h-14 w-full pt-4 my-4 space-x-4'>
@@ -64,4 +65,4 @@ const AddEmployee = () => {
     )
 }
 
-export default AddEmployee
+export default AddEmployee;
