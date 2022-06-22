@@ -3,7 +3,7 @@ package com.vishnu.employee.model;
 import lombok.Data;
 
 @Data
-public class EmployeeModel {
+public class Employee {
     private long id;
     private String firstName;
     private String lastName;
