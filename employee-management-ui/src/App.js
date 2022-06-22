@@ -2,8 +2,10 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      
+    <div className="bg-gray-800">
+      <div className="h-16 flex items-center">
+        <p>Employee Management System</p>
+      </div>
     </div>
   );
 }
