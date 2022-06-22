@@ -1,13 +1,13 @@
-import React from 'react'
+import React, {useState} from 'react'
 import EmployeeService from '../services/EmployeeService';
 
 const AddEmployee = () => {
-
+    
     const [employee, setEmployee] = useState({
         id: "",
         firstName: "",
         lastName: "",
-        emailId: ""
+        emailId: "",
     });
 
     // State is updated when user changes the input value
