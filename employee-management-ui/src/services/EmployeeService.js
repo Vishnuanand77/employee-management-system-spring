@@ -26,7 +26,7 @@ class EmployeeService {
     }
 
     // Method to update employee by id
-    updateEmployee(id, employee) {
+    updateEmployee(employee, id) {
         return axios.put(EMPLOYEE_API_BASE_URL + "/" + id, employee);
     }
 }
