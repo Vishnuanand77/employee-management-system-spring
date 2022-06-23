@@ -1,3 +1,4 @@
+import { editableInputTypes } from '@testing-library/user-event/dist/utils';
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import EmployeeService from '../services/EmployeeService';
@@ -29,6 +30,21 @@ const EmployeeList = () => {
 		fetchData();
 	}, []);
 
+	// Delete employee function is passed as props to the child.
+		// This is done so that the child can call the function to delete the employee and then
+		// return the control back to the parent.
+	const deleteEmployee = async (event, id) => {
+		event.preventDefault();
+		EmployeeService.deleteEmployee(id) // Delete API Call
+		.then((response) => {
+			// If data is present in the table, then remove the row from the table
+			if(employees) {
+				setEmployees((prevElement) => {
+					return prevElement.filter(employee => employee.id !== id); // Flitering the list of employees and removing the one with the id passed to the function
+				});
+			}
+		});
+	};
 
 	return (
 		<div className='container mx-auto my-8'>
@@ -48,7 +64,10 @@ const EmployeeList = () => {
 					{!loading && (
 						<tbody className='bg-white'>
 							{employees.map(employee => (
-								<Employee employee={employee} key={employee.id}></Employee>
+								<Employee 
+									employee={employee} 
+									key={employee.id}
+									deleteEmployee={deleteEmployee}></Employee>
 							))}{/* End of employees.map */}
 						</tbody>
 					)}{/* End of !loading condition*/}
