@@ -32,6 +32,18 @@ const AddEmployee = () => {
         });
     };
 
+    // Function to clear the form
+    const resetForm = (event) => {
+        event.preventDefault();
+        // Reseting to initial state
+        setEmployee({
+            id: "",
+            firstName: "",
+            lastName: "",
+            emailId: "",
+        });
+    }
+
     return (
         // Main card
         <div className='flex max-w-2xl mx-auto shadow border-b'>
@@ -61,7 +73,7 @@ const AddEmployee = () => {
                     <button className='rounded text-white font-semibold bg-green-500 hover:bg-green-800 py-2 px-6' onClick={saveEmployee}>
                         Save
                     </button>
-                    <button className='rounded text-white font-semibold bg-red-500 hover:bg-red-800 py-2 px-6'>
+                    <button className='rounded text-white font-semibold bg-red-500 hover:bg-red-800 py-2 px-6' onClick={resetForm}>
                         Clear
                     </button>
                 </div>
