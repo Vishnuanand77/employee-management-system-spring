@@ -47,4 +47,21 @@ public class EmployeeController {
         return  ResponseEntity.ok(response);
     }
 
+    // Method to get employee by ID
+    @GetMapping("/employees/{id}")
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id) {
+        Employee employee = null;
+        employee = employeeService.getEmployeeById(id);
+
+        return  ResponseEntity.ok(employee);
+    }
+
+    // Method to upload data for an employee
+    @PutMapping("/employees/{id}")
+    public ResponseEntity<Employee> updateEmployee(@PathVariable Long id, @RequestBody Employee employee) {
+        employee = employeeService.updateEmployee(id, employee);
+
+        return  ResponseEntity.ok(employee);
+    }
+
 }

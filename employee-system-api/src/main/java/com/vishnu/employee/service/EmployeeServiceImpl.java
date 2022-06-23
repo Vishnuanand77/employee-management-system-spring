@@ -7,7 +7,6 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService{
@@ -52,5 +51,28 @@ public class EmployeeServiceImpl implements EmployeeService{
         EmployeeEntity employeeEntity = employeeRepository.findById(id).get(); // Getting the record by id
         employeeRepository.delete(employeeEntity); // Deleting the obtained record
         return true;
+    }
+
+    @Override
+    public Employee getEmployeeById(Long id) {
+        EmployeeEntity employeeEntity = employeeRepository.findById(id).get();
+
+        Employee employee = new Employee();
+        BeanUtils.copyProperties(employeeEntity, employee);
+
+        return employee;
+    }
+
+    @Override
+    public Employee updateEmployee(Long id, Employee employee) {
+        EmployeeEntity employeeEntity = employeeRepository.findById(id).get();
+
+        employeeEntity.setEmailId(employee.getEmailId());
+        employeeEntity.setFirstName(employee.getFirstName());
+        employeeEntity.setLastName(employee.getLastName());
+
+        employeeRepository.save(employeeEntity);
+
+        return employee;
     }
 }
