@@ -3,9 +3,12 @@ package com.vishnu.employee.controller;
 import com.vishnu.employee.model.Employee;
 import com.vishnu.employee.service.EmployeeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin(origins = "http://localhost:3000") // To allow CORS
 @RestController
@@ -29,6 +32,19 @@ public class EmployeeController {
     @GetMapping("/employees")
     public List<Employee> fetchAllEmployees() {
         return employeeService.getAllEmployees();
+    }
+
+    // Method to delete an employee
+    @DeleteMapping("/employees/{id}")
+    public ResponseEntity<Map<String, Boolean>> deleteEmployee(@PathVariable Long id) {
+        boolean deleted = false; // False
+
+        deleted = employeeService.deleteEmployee(id);
+
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("deleted", deleted);
+
+        return  ResponseEntity.ok(response);
     }
 
 }
