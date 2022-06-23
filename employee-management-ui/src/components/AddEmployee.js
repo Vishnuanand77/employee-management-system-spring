@@ -1,8 +1,11 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
+import { useNavigate } from "react-router-dom";
 import EmployeeService from '../services/EmployeeService';
 
 const AddEmployee = () => {
     
+    const navigate = useNavigate();
+
     const [employee, setEmployee] = useState({
         id: "",
         firstName: "",
@@ -22,6 +25,8 @@ const AddEmployee = () => {
         // Call to the API to save the employee
         EmployeeService.saveEmployee(employee).then(response => {
             console.log(response);
+            // Using useNavigate() hook to redirect to EmployeeList page
+            navigate("/employeeList");
         }).catch(error => {
             console.log(error);
         });
