@@ -8,13 +8,13 @@ function App() {
 	return (
 		<>
 			<BrowserRouter>
-				<NavBar /> {/* NavBar component that is persistently displayed*/}
+				<NavBar/> {/* NavBar component that is persistently displayed*/}
 				{/* Configuring routes to display different pages in different urls */}
 				<Routes>
-					<Route index element={<EmployeeList />} />
-					<Route path="/" element={<EmployeeList />} />
-					<Route path="/employeeList" element={<EmployeeList />} />
-					<Route path="/addEmployee" element={<AddEmployee />} />
+					<Route index element={<EmployeeList/>}/>
+					<Route path="/" element={<EmployeeList/>}/>
+					<Route path="/employeeList" element={<EmployeeList/>}/>
+					<Route path="/addEmployee" element={<AddEmployee/>}/>
 				</Routes>
 			</BrowserRouter>
 		</>
